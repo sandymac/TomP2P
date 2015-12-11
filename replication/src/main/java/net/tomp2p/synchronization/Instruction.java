@@ -70,7 +70,7 @@ public class Instruction implements Serializable {
         if (reference >= 0) {
             return reference == i.reference;
         }
-        return literal.equals(i.literal);
+        return literal != null ? literal.equals(i.literal) : null == i.literal;
     }
 
     @Override
