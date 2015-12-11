@@ -173,8 +173,12 @@ public class DataSerializer implements Serializer<Data>, Serializable {
 	    buffer.load();
 	    ByteBuf buf = Unpooled.wrappedBuffer(buffer);
 	    Data data = Data.decodeHeader(buf, signatureFactory);
-	    data.decodeBuffer(buf);
-	    data.decodeDone(buf, signatureFactory);
+		if (data != null) {
+			data.decodeBuffer(buf);
+			data.decodeDone(buf, signatureFactory);
+		} else {
+			throw new IOException("Unable to decode header, too small? file name: " + hash);
+		}
 	    file.close();
 	    return data;
     }
