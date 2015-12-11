@@ -357,7 +357,9 @@ public class StorageLayer implements DigestStorage {
 			tmp = filterCopy(tmp, limit, ascending);
 			return tmp;
 		} finally {
-			lock.unlock();
+			if (lock != null) {
+				lock.unlock();
+			}
 		}
 	}
 
@@ -516,7 +518,9 @@ public class StorageLayer implements DigestStorage {
 
 			return tmp;
 		} finally {
-			lock.unlock();
+			if (lock != null) {
+				lock.unlock();
+			}
 		}
 	}
 
@@ -544,7 +548,9 @@ public class StorageLayer implements DigestStorage {
 			}
 			return result;
 		} finally {
-			lock.unlock();
+			if (lock != null) {
+				lock.unlock();
+			}
 		}
 	}
 
@@ -562,7 +568,9 @@ public class StorageLayer implements DigestStorage {
 			}
 			return result;
 		} finally {
-			lock.unlock();
+			if (lock != null) {
+				lock.unlock();
+			}
 		}
 	}
 
@@ -618,7 +626,9 @@ public class StorageLayer implements DigestStorage {
 			}
 			return digestInfo;
 		} finally {
-			lock.unlock();
+			if (lock != null) {
+				lock.unlock();
+			}
 		}
 	}
 
